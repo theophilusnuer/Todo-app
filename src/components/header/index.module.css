@@ -1,0 +1,15 @@
+.headerImage {
+    background-image: linear-gradient(90deg, rgba(177,42,220,0.8519782913165266) 15%, rgba(115,90,220,0.6615021008403361) 59%, rgba(72,147,230,0.6727065826330532) 100%),  url(../../images/header\ bg.jpg);
+    background-position: center;
+    height: 35vh;
+    margin: 7px 7px 0 7px;
+    border-radius: 10px;
+}
+
+.headerH1{
+  margin: 0 auto;  
+  width: 60%;
+  padding-top: 60px;
+  color: white;
+
+}
