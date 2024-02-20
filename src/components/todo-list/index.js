@@ -1,5 +1,5 @@
 import {useLocalStorage} from'usehooks-ts';
-import styles from'./index.module.css';
+
 
 function TodoList(){
     
@@ -16,7 +16,7 @@ function TodoList(){
 // useEffect(getTodos, []);
 
     return(
-        <ul className={styles.todoListCase}>
+        <ul>
            {todos.map(function(todo, index) {
             return<li key={index}>{todo}</li>
            })}

@@ -18,3 +18,7 @@ border-radius: 5px;
 .addTodoInput:focus {
     border: none;
 }
+
+.btn{
+    background-color: pink;
+}

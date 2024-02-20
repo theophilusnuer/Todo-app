@@ -18,6 +18,7 @@ const [todo, setTodo] = useState('');
       />
 
       <button
+      className= {`btn ${styles.btn}`}
         onClick={function () {
           //IGNORE
           // Get existing list of todos from local storage (deserialize into a string for local storage)
