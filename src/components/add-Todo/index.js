@@ -3,13 +3,14 @@ import { useLocalStorage } from "usehooks-ts";
 import{useState} from 'react';
 
 function AddTodo() {
-  const [todos, setTodos] = useLocalStorage("TODO_Key", []);
+  const [todos, setTodos] = useLocalStorage("TODO_KEY", []);
 //   let todo;
 const [todo, setTodo] = useState('');
 
   return (
     <section className={styles.addTodo}>
       <input
+      value={todo}
         onChange={function (event) {
           setTodo(event.target.value);
         }}
@@ -28,6 +29,8 @@ const [todo, setTodo] = useState('');
           //   todos.push(todo);
 
           setTodos([...todos, todo]);
+          //wiping the add todo after typing, corresponding code with line 13
+          setTodo('');
 
           // Set all todos in local storage (serialize into a string before storing in local storage)
           //   localStorage.setItem("TODO_KEY", JSON.stringify(todos));
