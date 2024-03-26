@@ -1,10 +1,27 @@
 import { useLocalStorage } from "usehooks-ts";
 import TodoItem from "../todo-item";
+import { useEffect, useState } from "react";
 
 function TodoList() {
-  const [todos, setTodos] = useLocalStorage("TODO_KEY", []);
+  const [todos, setTodos] = useState([]);
 
-  function deleteAll() {
+  const getTodos = async () => {
+    //Get the todos from the todos-api
+    const response = await fetch("http://localhost:4000/todos");
+    const data = await response.json();
+    console.log(data);
+    //update todos state
+    setTodos(data);
+  };
+
+  async function deleteAll() {
+    //Delete todos from todo-api
+    const response = await fetch("http://localhost:4000/todos",{
+      method: 'DELETE'
+    });
+   const data = await response.json();
+   console.log(data);
+    //update todos state
     setTodos([]);
   }
   // function getTodos() {
@@ -15,6 +32,9 @@ function TodoList() {
   // }
 
   // useEffect(getTodos, []);
+  useEffect(() => {
+    getTodos();
+  }, []);
 
   return (
     <section>
@@ -23,7 +43,7 @@ function TodoList() {
       </button>
       <ul className="list-group">
         {todos.map(function (todo, index) {
-          return <TodoItem todo={todo} index={index} />;
+          return <TodoItem key={todo._id} todo={todo.title} index={index} />;
         })}
       </ul>
     </section>

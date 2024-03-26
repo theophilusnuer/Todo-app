@@ -20,16 +20,21 @@ const [todo, setTodo] = useState('');
 
       <button
       className= {`btn ${styles.btn}`}
-        onClick={function () {
-          //IGNORE
-          // Get existing list of todos from local storage (deserialize into a string for local storage)
-          // let todos = JSON.parse(localStorage.getItem('TODO_KEY')) || [];
+        onClick={async function () {
+         //Post todo to toso-api
+         const response = await fetch('http://localhost:4000/todos', {
+          method:'POST',
+          body: JSON.stringify({
+            title: todo
+          }),
+          headers: {
+            'Content-Type':'application/json'
+          }
+         });
+const data = await response.json();
+console.log(data)
 
-          // Add new todo to existing list of todos
-          //   todos.push(todo);
-
-          setTodos([...todos, todo]);
-          //wiping the add todo after typing, corresponding code with line 13
+         //wipe the input
           setTodo('');
 
           // Set all todos in local storage (serialize into a string before storing in local storage)
